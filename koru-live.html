@@ -5,215 +5,296 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Koru Jewelers — Social Dashboard · Mina Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --linen:#F5F0E8;--linen-dark:#EDE6D6;--espresso:#2C1A0E;
-    --espresso-mid:#5C3D2E;--espresso-light:#8B6F5E;
-    --coral:#C96B4A;--gold:#B8924A;--gold-light:#D4AF72;
-    --cream:#FAF7F2;--green:#3B7A57;--red:#A0392A;
-    --text-primary:#1A1208;--text-secondary:#5C3D2E;--text-muted:#9B8070;
-    --border:rgba(44,26,14,0.10);--border-strong:rgba(44,26,14,0.20);
+    /* Pearl backgrounds */
+    --pearl:         #FDFAF7;
+    --pearl-warm:    #F8F4EF;
+    --pearl-mid:     #F0EBE3;
+    --pearl-deep:    #E8E0D5;
+
+    /* Mina burgundy (from logo) */
+    --burgundy:      #4A1A1A;
+    --burgundy-mid:  #6B2D2D;
+    --burgundy-light:#8C4444;
+    --burgundy-faint:rgba(74,26,26,0.06);
+    --burgundy-soft: rgba(74,26,26,0.12);
+
+    /* Accents */
+    --gold:          #A8864A;
+    --gold-light:    #C4A46A;
+    --gold-faint:    rgba(168,134,74,0.1);
+
+    /* Text */
+    --text-dark:     #1C0F0F;
+    --text-mid:      #4A3030;
+    --text-soft:     #7A5C5C;
+    --text-muted:    #A08888;
+
+    /* Borders */
+    --border:        rgba(74,26,26,0.08);
+    --border-mid:    rgba(74,26,26,0.14);
+
+    /* Status */
+    --green:         #2D6A4F;
+    --red:           #8B2020;
   }
-  body{font-family:'DM Sans',sans-serif;background:var(--linen);color:var(--text-primary);min-height:100vh;overflow-x:hidden}
 
-  /* NAV */
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:52px;background:var(--espresso)}
-  .nav-brand{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light)}
-  .nav-right{display:flex;align-items:center;gap:16px}
-  .live-badge{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#7EC8A0;background:rgba(126,200,160,0.1);border:0.5px solid rgba(126,200,160,0.25);border-radius:20px;padding:3px 9px}
-  .live-dot{width:4px;height:4px;border-radius:50%;background:#7EC8A0;animation:livepulse 2s infinite}
-  @keyframes livepulse{0%,100%{opacity:1}50%{opacity:.3}}
-  .nav-time{font-size:11px;color:rgba(245,240,232,0.35);font-variant-numeric:tabular-nums}
+  html{font-size:16px}
+  body{font-family:'Montserrat',sans-serif;background:var(--pearl);color:var(--text-dark);min-height:100vh;overflow-x:hidden}
 
-  /* HERO */
-  .hero{background:var(--espresso);padding:3rem 2.5rem 2.5rem;position:relative;overflow:hidden}
-  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,146,74,0.3),transparent)}
-  .hero-watermark{position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:200px;font-weight:300;color:rgba(184,146,74,0.04);letter-spacing:-0.05em;pointer-events:none;user-select:none;line-height:1}
+  /* ── NAV ── */
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 2.5rem;height:54px;
+    background:var(--burgundy);
+    border-bottom:1px solid rgba(168,134,74,0.2);
+  }
+  .nav-left{display:flex;align-items:center;gap:14px}
+  .nav-logo{height:20px;width:auto;filter:brightness(0) invert(1);opacity:0.9}
+  .nav-divider{width:1px;height:18px;background:rgba(255,255,255,0.15)}
+  .nav-label{font-size:9px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .live-badge{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#A8D5B8;background:rgba(168,213,184,0.1);border:0.5px solid rgba(168,213,184,0.25);border-radius:20px;padding:3px 10px}
+  .live-dot{width:4px;height:4px;border-radius:50%;background:#A8D5B8;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .nav-time{font-size:10px;font-weight:300;color:rgba(255,255,255,0.3);font-variant-numeric:tabular-nums}
+
+  /* ── HERO ── */
+  .hero{
+    background:var(--burgundy);
+    padding:2.5rem 2.5rem 2rem;
+    position:relative;overflow:hidden;
+  }
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(168,134,74,0.4) 50%,transparent 100%)}
+  .hero-bg-text{
+    position:absolute;right:-10px;top:50%;transform:translateY(-50%);
+    font-family:'Montserrat',sans-serif;font-size:160px;font-weight:700;
+    color:rgba(255,255,255,0.03);letter-spacing:-0.03em;
+    pointer-events:none;user-select:none;line-height:1;
+  }
   .hero-inner{position:relative;z-index:1}
-  .hero-tag{display:inline-flex;align-items:center;gap:8px;margin-bottom:1rem}
-  .hero-tag-dot{width:4px;height:4px;background:var(--gold);border-radius:50%}
-  .hero-tag-text{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:400}
-  .hero-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:#F5F0E8;line-height:1;margin-bottom:6px}
-  .hero-title em{font-style:italic;color:var(--gold-light)}
-  .hero-sub{font-size:11px;color:rgba(245,240,232,0.35);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem}
-  .hero-pills{display:flex;gap:12px;flex-wrap:wrap}
-  .hero-pill{font-size:10px;color:rgba(245,240,232,0.4);display:flex;align-items:center;gap:6px}
-  .hero-pill-dot{width:3px;height:3px;background:rgba(184,146,74,0.5);border-radius:50%}
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(168,134,74,0.12);border:0.5px solid rgba(168,134,74,0.25);
+    border-radius:20px;padding:3px 12px;margin-bottom:1.25rem;
+  }
+  .hero-tag-text{font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-light)}
+  .hero-client{font-size:11px;font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px}
+  .hero-title{font-size:46px;font-weight:200;color:#FDFAF7;line-height:1;margin-bottom:4px;letter-spacing:-0.01em}
+  .hero-title strong{font-weight:600;color:var(--gold-light)}
+  .hero-sub{font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.75rem}
+  .hero-pills{display:flex;gap:20px;flex-wrap:wrap}
+  .hero-pill{font-size:10px;font-weight:300;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:6px}
+  .hero-pill::before{content:'';width:3px;height:3px;border-radius:50%;background:rgba(168,134,74,0.6)}
 
-  /* LAYOUT */
-  .main{max-width:1140px;margin:0 auto;padding:2rem 2rem 5rem}
-  .section-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;padding-left:1px}
-  .section-gap{margin-top:2rem}
+  /* ── LAYOUT ── */
+  .main{max-width:1160px;margin:0 auto;padding:2rem 2rem 5rem}
+  .sec-label{
+    font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--text-muted);margin-bottom:10px;padding-left:1px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .sec-gap{margin-top:2rem}
 
-  /* BEST POST */
-  .best-post{background:var(--espresso);border-radius:14px;padding:1.75rem 2rem;margin-bottom:2rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center}
-  .best-post-icon{font-size:24px;opacity:0.9}
-  .best-post-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
-  .best-post-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:#F5F0E8;line-height:1.45;margin-bottom:4px}
-  .best-post-meta{font-size:10px;color:rgba(245,240,232,0.35);letter-spacing:0.04em}
-  .best-post-stats{display:flex;gap:2rem;flex-shrink:0}
-  .bps{text-align:right}
-  .bps-val{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--gold-light);line-height:1}
-  .bps-label{font-size:9px;color:rgba(245,240,232,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-top:2px}
+  /* ── BEST POST ── */
+  .best-post{
+    background:#FDFAF7;
+    border:0.5px solid var(--border-mid);
+    border-left:3px solid var(--gold);
+    border-radius:10px;padding:1.5rem 1.75rem;
+    margin-bottom:1.75rem;
+    display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;
+  }
+  .bp-icon{font-size:22px;opacity:0.85}
+  .bp-eyebrow{font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+  .bp-text{font-size:15px;font-weight:300;color:var(--text-dark);line-height:1.45;margin-bottom:4px}
+  .bp-meta{font-size:10px;font-weight:400;color:var(--text-muted);letter-spacing:0.04em}
+  .bp-stats{display:flex;gap:2rem;flex-shrink:0}
+  .bp-stat{}
+  .bp-stat-val{font-size:28px;font-weight:200;color:var(--burgundy);line-height:1}
+  .bp-stat-label{font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-top:2px}
 
-  /* KPI GRID */
-  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:8px}
-  .kpi{background:var(--cream);border:0.5px solid var(--border);border-radius:10px;padding:1.1rem 1.2rem 0.9rem;transition:border-color 0.2s,box-shadow 0.2s;position:relative;overflow:hidden}
-  .kpi:hover{border-color:var(--border-strong);box-shadow:0 2px 12px rgba(44,26,14,0.06)}
-  .kpi-src{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
-  .kpi-name{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:5px;font-weight:500}
-  .kpi-val{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--espresso);line-height:1;font-variant-numeric:tabular-nums}
-  .kpi-delta{margin-top:7px;display:flex;flex-direction:column;gap:2px}
-  .kpi-delta-main{font-size:11px;font-weight:500}
-  .kpi-delta-sub{font-size:10px;color:var(--text-muted)}
-  .pill{display:inline-flex;align-items:center;gap:3px;padding:1px 7px;border-radius:20px;font-size:10px;font-weight:500}
-  .pill.up{background:rgba(59,122,87,0.08);color:var(--green)}
-  .pill.down{background:rgba(160,57,42,0.08);color:var(--red)}
-  .pill.neutral{background:rgba(155,128,112,0.08);color:var(--text-muted)}
-  .pill.live{background:rgba(201,107,74,0.08);color:var(--coral)}
+  /* ── KPI CARDS ── */
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:8px;margin-bottom:8px}
+  .kpi{
+    background:#FDFAF7;
+    border:0.5px solid var(--border);
+    border-radius:10px;padding:1.1rem 1.2rem 0.9rem;
+    transition:border-color 0.2s,box-shadow 0.2s;
+  }
+  .kpi:hover{border-color:var(--border-mid);box-shadow:0 2px 16px rgba(74,26,26,0.06)}
+  .kpi-src{font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+  .kpi-name{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-soft);margin-bottom:5px}
+  .kpi-val{font-size:32px;font-weight:200;color:var(--burgundy);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+  .kpi-delta{margin-top:8px;display:flex;flex-direction:column;gap:2px}
+  .kpi-main{font-size:11px;font-weight:500}
+  .kpi-sub{font-size:9px;font-weight:400;color:var(--text-muted)}
 
-  /* ADS SECTION */
-  .ads-hero{background:linear-gradient(135deg,var(--espresso) 0%,#3D2410 100%);border-radius:14px;padding:1.75rem 2rem;margin-bottom:8px}
-  .ads-hero-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:12px}
-  .ads-hero-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#F5F0E8}
-  .ads-hero-sub{font-size:10px;color:rgba(245,240,232,0.4);letter-spacing:0.06em;margin-top:2px}
-  .ads-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:1.25rem}
-  .ads-kpi{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.08);border-radius:8px;padding:0.9rem 1rem}
-  .ads-kpi-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,240,232,0.4);margin-bottom:5px}
-  .ads-kpi-val{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gold-light);line-height:1}
-  .ads-kpi-sub{font-size:10px;color:rgba(245,240,232,0.3);margin-top:2px}
+  /* Pills */
+  .pill{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+  .pill.up{background:rgba(45,106,79,0.08);color:var(--green)}
+  .pill.down{background:rgba(139,32,32,0.08);color:var(--red)}
+  .pill.neutral{background:rgba(160,136,136,0.08);color:var(--text-muted)}
+  .pill.live{background:var(--burgundy-faint);color:var(--burgundy-light)}
 
-  /* PAID VS ORGANIC */
-  .paid-organic-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-  .paid-organic-row:last-child{margin-bottom:0}
-  .pol-label{font-size:11px;font-weight:500;width:80px;flex-shrink:0}
+  /* ── ADS SECTION ── */
+  .ads-wrap{
+    background:var(--burgundy);
+    border-radius:12px;padding:1.75rem 2rem;margin-bottom:8px;
+  }
+  .ads-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:10px}
+  .ads-title{font-size:16px;font-weight:300;color:#FDFAF7;letter-spacing:0.01em}
+  .ads-sub{font-size:9px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:3px}
+  .ads-badge{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-light);background:rgba(168,134,74,0.12);border:0.5px solid rgba(168,134,74,0.2);border-radius:20px;padding:3px 10px;flex-shrink:0;align-self:flex-start;margin-top:4px}
+  .ads-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:8px;margin-bottom:1.5rem}
+  .ads-kpi{background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.07);border-radius:8px;padding:0.85rem 1rem}
+  .ads-kpi-label{font-size:8px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:5px}
+  .ads-kpi-val{font-size:24px;font-weight:200;color:var(--gold-light);line-height:1;letter-spacing:-0.01em}
+  .ads-kpi-sub{font-size:9px;font-weight:300;color:rgba(255,255,255,0.25);margin-top:2px}
+
+  .pol-section{margin-bottom:1.5rem}
+  .pol-title{font-size:8px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px}
+  .pol-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .pol-row:last-child{margin-bottom:0}
+  .pol-label{font-size:10px;font-weight:500;width:76px;flex-shrink:0}
   .pol-label.paid{color:var(--gold-light)}
-  .pol-label.organic{color:rgba(245,240,232,0.6)}
-  .pol-bar-track{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
-  .pol-bar-fill{height:100%;border-radius:4px;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
-  .pol-val{font-size:12px;font-weight:500;width:60px;text-align:right;flex-shrink:0}
+  .pol-label.organic{color:rgba(255,255,255,0.45)}
+  .pol-track{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+  .pol-fill{height:100%;border-radius:3px;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+  .pol-val{font-size:11px;font-weight:500;width:54px;text-align:right;flex-shrink:0}
   .pol-val.paid{color:var(--gold-light)}
-  .pol-val.organic{color:rgba(245,240,232,0.6)}
+  .pol-val.organic{color:rgba(255,255,255,0.45)}
 
-  /* CAMPAIGNS TABLE */
-  .campaign-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:0.5px solid rgba(255,255,255,0.06)}
-  .campaign-row:last-child{border-bottom:none;padding-bottom:0}
-  .campaign-status{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-  .campaign-name{flex:1;font-size:12px;color:rgba(245,240,232,0.8);line-height:1.3}
-  .campaign-stats{display:flex;gap:16px;flex-shrink:0}
-  .campaign-stat{text-align:right}
-  .campaign-stat-val{font-size:12px;font-weight:500;color:var(--gold-light)}
-  .campaign-stat-label{font-size:9px;color:rgba(245,240,232,0.3);letter-spacing:0.06em}
+  .camps-title{font-size:8px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px}
+  .camp-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:0.5px solid rgba(255,255,255,0.05)}
+  .camp-row:last-child{border-bottom:none;padding-bottom:0}
+  .camp-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+  .camp-name{flex:1;font-size:11px;font-weight:300;color:rgba(255,255,255,0.7);line-height:1.3}
+  .camp-obj{font-size:8px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:2px}
+  .camp-stats{display:flex;gap:14px;flex-shrink:0}
+  .camp-stat-val{font-size:12px;font-weight:500;color:var(--gold-light);text-align:right}
+  .camp-stat-label{font-size:8px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-align:right;margin-top:1px}
 
-  /* CHART CARDS */
-  .card{background:var(--cream);border:0.5px solid var(--border);border-radius:10px;padding:1.4rem}
+  /* ── CHART CARDS ── */
+  .card{background:#FDFAF7;border:0.5px solid var(--border);border-radius:10px;padding:1.35rem 1.5rem}
   .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;flex-wrap:wrap;gap:8px}
-  .card-title{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);font-weight:500}
-  .chart-legend{display:flex;gap:12px}
-  .legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text-muted)}
-  .legend-dot{width:7px;height:7px;border-radius:2px}
+  .card-title{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-soft)}
+  .leg{display:flex;gap:12px}
+  .leg-item{display:flex;align-items:center;gap:4px;font-size:9px;font-weight:500;color:var(--text-muted)}
+  .leg-dot{width:7px;height:7px;border-radius:2px}
 
-  /* GRIDS */
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
   .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px}
 
   /* BARS */
   .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
   .bar-row:last-child{margin-bottom:0}
-  .bar-label{font-size:11px;color:var(--text-secondary);width:82px;flex-shrink:0;font-weight:500}
-  .bar-track{flex:1;height:5px;background:var(--linen-dark);border-radius:3px;overflow:hidden}
-  .bar-fill{height:100%;border-radius:3px;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
-  .bar-val{font-size:11px;color:var(--text-primary);width:36px;text-align:right;flex-shrink:0;font-weight:500}
+  .bar-label{font-size:10px;font-weight:500;color:var(--text-mid);width:82px;flex-shrink:0}
+  .bar-track{flex:1;height:4px;background:var(--pearl-deep);border-radius:2px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:2px;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+  .bar-val{font-size:10px;font-weight:600;color:var(--text-dark);width:34px;text-align:right;flex-shrink:0}
 
   /* POSTS */
   .post-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:0.5px solid var(--border)}
   .post-item:last-child{border-bottom:none;padding-bottom:0}
-  .post-rank{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--gold);width:18px;flex-shrink:0;line-height:1.3}
+  .post-rank{font-size:14px;font-weight:200;color:var(--gold);width:16px;flex-shrink:0;line-height:1.4}
   .post-body{flex:1}
-  .post-text{font-size:11px;color:var(--text-primary);line-height:1.4;margin-bottom:2px}
-  .post-meta{font-size:10px;color:var(--text-muted)}
-  .post-stat{font-size:11px;font-weight:500;color:var(--coral);flex-shrink:0}
+  .post-text{font-size:11px;font-weight:400;color:var(--text-dark);line-height:1.4;margin-bottom:2px}
+  .post-meta{font-size:9px;font-weight:500;letter-spacing:0.04em;color:var(--text-muted)}
+  .post-stat{font-size:11px;font-weight:600;color:var(--burgundy-light);flex-shrink:0}
 
   /* DAY BARS */
   .day-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
-  .day-name{font-size:11px;color:var(--text-secondary);width:28px;flex-shrink:0;font-weight:500}
-  .day-bar-track{flex:1;height:14px;background:var(--linen-dark);border-radius:3px;overflow:hidden}
-  .day-bar-fill{height:100%;border-radius:3px;background:rgba(201,107,74,0.4);transition:width 0.9s cubic-bezier(.4,0,.2,1)}
-  .day-bar-fill.best{background:linear-gradient(90deg,var(--coral),var(--gold))}
-  .day-val{font-size:10px;color:var(--text-muted);width:48px;text-align:right;flex-shrink:0}
+  .day-name{font-size:10px;font-weight:600;color:var(--text-mid);width:28px;flex-shrink:0}
+  .day-track{flex:1;height:12px;background:var(--pearl-mid);border-radius:3px;overflow:hidden}
+  .day-fill{height:100%;border-radius:3px;background:var(--pearl-deep);transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+  .day-fill.best{background:linear-gradient(90deg,var(--burgundy-mid),var(--gold))}
+  .day-val{font-size:9px;font-weight:500;color:var(--text-muted);width:46px;text-align:right;flex-shrink:0}
 
   /* CONSISTENCY */
   .dot-row{display:flex;gap:5px;margin:10px 0}
-  .day-dot{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;letter-spacing:0.04em}
-  .day-dot.posted{background:rgba(59,122,87,0.12);color:var(--green)}
-  .day-dot.missed{background:var(--linen-dark);color:var(--text-muted)}
+  .day-dot{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;letter-spacing:0.02em}
+  .day-dot.posted{background:rgba(45,106,79,0.1);color:var(--green)}
+  .day-dot.missed{background:var(--pearl-mid);color:var(--text-muted)}
 
   /* DEMO */
   .demo-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
   .demo-row:last-child{margin-bottom:0}
-  .demo-label{font-size:11px;color:var(--text-secondary);width:68px;flex-shrink:0}
-  .demo-track{flex:1;height:4px;background:var(--linen-dark);border-radius:2px;overflow:hidden}
+  .demo-label{font-size:10px;font-weight:500;color:var(--text-mid);width:66px;flex-shrink:0}
+  .demo-track{flex:1;height:4px;background:var(--pearl-deep);border-radius:2px;overflow:hidden}
   .demo-fill{height:100%;border-radius:2px;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
-  .demo-pct{font-size:11px;font-weight:500;color:var(--text-primary);width:26px;text-align:right;flex-shrink:0}
+  .demo-pct{font-size:10px;font-weight:600;color:var(--text-dark);width:26px;text-align:right;flex-shrink:0}
 
   /* CONTENT BARS */
   .ct-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
   .ct-row:last-child{margin-bottom:0}
-  .ct-label{font-size:11px;color:var(--text-secondary);width:88px;flex-shrink:0;font-weight:500}
-  .ct-track{flex:1;height:5px;background:var(--linen-dark);border-radius:3px;overflow:hidden}
-  .ct-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--coral),var(--gold));transition:width 0.9s cubic-bezier(.4,0,.2,1)}
-  .ct-stat{font-size:10px;color:var(--text-muted);width:90px;text-align:right;flex-shrink:0}
+  .ct-label{font-size:10px;font-weight:500;color:var(--text-mid);width:88px;flex-shrink:0}
+  .ct-track{flex:1;height:4px;background:var(--pearl-deep);border-radius:2px;overflow:hidden}
+  .ct-fill{height:100%;border-radius:2px;background:var(--burgundy-mid);transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+  .ct-stat{font-size:9px;font-weight:500;color:var(--text-muted);width:90px;text-align:right;flex-shrink:0}
 
-  .error-banner{background:#FEF2F0;border:0.5px solid rgba(201,107,74,0.25);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--coral);margin-bottom:1rem}
-  .spinner{width:16px;height:16px;border:1.5px solid var(--border);border-top-color:var(--coral);border-radius:50%;animation:spin 0.8s linear infinite;margin:4px auto}
+  /* MISC */
+  .error-banner{background:#FDF0F0;border:0.5px solid rgba(139,32,32,0.2);border-radius:8px;padding:10px 14px;font-size:11px;font-weight:400;color:var(--red);margin-bottom:1rem}
+  .spinner{width:16px;height:16px;border:1.5px solid var(--pearl-deep);border-top-color:var(--burgundy-mid);border-radius:50%;animation:spin 0.8s linear infinite;margin:4px auto}
   @keyframes spin{to{transform:rotate(360deg)}}
 
-  .refresh-bar{position:fixed;bottom:0;left:0;right:0;height:34px;background:var(--espresso);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:100}
-  .refresh-left{font-size:9px;color:rgba(245,240,232,0.3);letter-spacing:0.08em;text-transform:uppercase}
+  .refresh-bar{position:fixed;bottom:0;left:0;right:0;height:34px;background:var(--burgundy);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:100;border-top:1px solid rgba(168,134,74,0.15)}
+  .refresh-left{font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
   .refresh-right{display:flex;align-items:center;gap:12px}
-  .refresh-timer{font-size:10px;color:rgba(245,240,232,0.4);font-variant-numeric:tabular-nums}
-  .refresh-btn{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-light);background:rgba(184,146,74,0.12);border:0.5px solid rgba(184,146,74,0.25);border-radius:20px;padding:3px 12px;cursor:pointer;transition:background 0.2s}
-  .refresh-btn:hover{background:rgba(184,146,74,0.22)}
-  .progress-bar{position:fixed;bottom:34px;left:0;height:1px;background:var(--coral);transition:width 1s linear;z-index:101}
+  .refresh-timer{font-size:9px;font-weight:400;color:rgba(255,255,255,0.35);font-variant-numeric:tabular-nums}
+  .refresh-btn{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-light);background:rgba(168,134,74,0.1);border:0.5px solid rgba(168,134,74,0.2);border-radius:20px;padding:3px 12px;cursor:pointer;transition:background 0.2s}
+  .refresh-btn:hover{background:rgba(168,134,74,0.2)}
+  .progress-bar{position:fixed;bottom:34px;left:0;height:1px;background:var(--gold);transition:width 1s linear;z-index:101}
   .footer-spacer{height:50px}
 
-  .fade-in{opacity:0;transform:translateY(6px);animation:fadein 0.45s ease forwards}
+  .fade-in{opacity:0;transform:translateY(5px);animation:fadein 0.4s ease forwards}
   @keyframes fadein{to{opacity:1;transform:translateY(0)}}
-  .fade-in:nth-child(1){animation-delay:.04s}.fade-in:nth-child(2){animation-delay:.08s}.fade-in:nth-child(3){animation-delay:.12s}.fade-in:nth-child(4){animation-delay:.16s}.fade-in:nth-child(5){animation-delay:.20s}.fade-in:nth-child(6){animation-delay:.24s}.fade-in:nth-child(7){animation-delay:.28s}.fade-in:nth-child(8){animation-delay:.32s}.fade-in:nth-child(9){animation-delay:.36s}
+  .fade-in:nth-child(1){animation-delay:.04s}.fade-in:nth-child(2){animation-delay:.08s}.fade-in:nth-child(3){animation-delay:.12s}.fade-in:nth-child(4){animation-delay:.16s}.fade-in:nth-child(5){animation-delay:.20s}.fade-in:nth-child(6){animation-delay:.24s}
 
   @media(max-width:700px){
     .two-col,.three-col{grid-template-columns:1fr}
-    .hero-title{font-size:38px}
-    .hero-watermark{display:none}
+    .hero-title{font-size:34px}
+    .hero-bg-text{display:none}
     .best-post{grid-template-columns:auto 1fr;grid-template-rows:auto auto}
-    .best-post-stats{grid-column:1/-1;justify-content:flex-start;gap:1.5rem}
+    .bp-stats{grid-column:1/-1;justify-content:flex-start;gap:1.5rem}
     .nav,.main,.hero{padding-left:1.25rem;padding-right:1.25rem}
     .ads-kpi-row{grid-template-columns:repeat(2,1fr)}
+    .camp-stats{gap:10px}
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
-  <span class="nav-brand">Mina Studio · Social Intelligence</span>
+  <div class="nav-left">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAUCAYAAAB7wJiZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH6AUEEioxxxxxxxx" class="nav-logo" alt="mina" onerror="this.style.display='none';document.getElementById('nav-text-logo').style.display='block'">
+    <span id="nav-text-logo" style="display:block;font-size:14px;font-weight:300;letter-spacing:0.18em;color:rgba(255,255,255,0.85);font-family:'Montserrat',sans-serif;font-style:italic;">mina</span>
+    <div class="nav-divider"></div>
+    <span class="nav-label">Social Intelligence</span>
+  </div>
   <div class="nav-right">
     <div class="live-badge"><div class="live-dot"></div>Live</div>
     <span class="nav-time" id="navTime">—</span>
   </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero">
-  <div class="hero-watermark">KORU</div>
+  <div class="hero-bg-text">KORU</div>
   <div class="hero-inner">
-    <div class="hero-tag"><div class="hero-tag-dot"></div><span class="hero-tag-text">Social Performance Dashboard</span></div>
-    <h1 class="hero-title">Koru <em>Jewelers</em></h1>
-    <p class="hero-sub">Instagram · Facebook · Pinterest</p>
+    <div class="hero-tag"><span class="hero-tag-text">Social Performance Dashboard</span></div>
+    <div class="hero-client">Koru Jewelers</div>
+    <h1 class="hero-title">Social <strong>Intelligence</strong></h1>
+    <p class="hero-sub">Instagram · Facebook · Pinterest · Meta Ads</p>
     <div class="hero-pills">
-      <div class="hero-pill"><div class="hero-pill-dot"></div>Live via Instagram Graph API</div>
-      <div class="hero-pill"><div class="hero-pill-dot"></div>Auto-refreshes every 60s</div>
-      <div class="hero-pill"><div class="hero-pill-dot"></div><span id="lastUpdated">Loading…</span></div>
+      <span class="hero-pill">Live via Instagram Graph API</span>
+      <span class="hero-pill">Auto-refreshes every 60s</span>
+      <span class="hero-pill" id="lastUpdated">Loading…</span>
     </div>
   </div>
 </header>
@@ -222,34 +303,33 @@
   <div id="errorBanner" class="error-banner" style="display:none;"></div>
 
   <!-- BEST POST -->
-  <p class="section-label">⭐ Best performing post</p>
   <div class="best-post">
-    <div class="best-post-icon">🏆</div>
+    <div class="bp-icon">🏆</div>
     <div>
-      <div class="best-post-eyebrow">Top post by engagement</div>
-      <div class="best-post-text" id="bestPostText">Loading…</div>
-      <div class="best-post-meta" id="bestPostMeta">—</div>
+      <div class="bp-eyebrow">Best performing post</div>
+      <div class="bp-text" id="bestPostText">Loading…</div>
+      <div class="bp-meta" id="bestPostMeta">—</div>
     </div>
-    <div class="best-post-stats">
-      <div class="bps"><div class="bps-val" id="bpLikes">—</div><div class="bps-label">Likes</div></div>
-      <div class="bps"><div class="bps-val" id="bpComments">—</div><div class="bps-label">Comments</div></div>
-      <div class="bps"><div class="bps-val" id="bpTotal">—</div><div class="bps-label">Total</div></div>
+    <div class="bp-stats">
+      <div class="bp-stat"><div class="bp-stat-val" id="bpLikes">—</div><div class="bp-stat-label">Likes</div></div>
+      <div class="bp-stat"><div class="bp-stat-val" id="bpComments">—</div><div class="bp-stat-label">Comments</div></div>
+      <div class="bp-stat"><div class="bp-stat-val" id="bpTotal">—</div><div class="bp-stat-label">Total</div></div>
     </div>
   </div>
 
   <!-- CORE KPIs -->
-  <p class="section-label">Core metrics — live with growth</p>
+  <p class="sec-label">Core metrics — live with growth</p>
   <div class="kpi-grid">
     <div class="kpi fade-in"><div class="kpi-src">📸 Instagram</div><div class="kpi-name">Followers</div><div class="kpi-val" id="kpi-followers"><div class="spinner"></div></div><div class="kpi-delta" id="delta-followers"></div></div>
-    <div class="kpi fade-in"><div class="kpi-src">👁 Reach</div><div class="kpi-name">Reach (7D)</div><div class="kpi-val" id="kpi-reach"><div class="spinner"></div></div><div class="kpi-delta" id="delta-reach"></div></div>
+    <div class="kpi fade-in"><div class="kpi-src">👁 All Platforms</div><div class="kpi-name">Reach (7D)</div><div class="kpi-val" id="kpi-reach"><div class="spinner"></div></div><div class="kpi-delta" id="delta-reach"></div></div>
     <div class="kpi fade-in"><div class="kpi-src">💬 Instagram</div><div class="kpi-name">Engagement Rate</div><div class="kpi-val" id="kpi-eng"><div class="spinner"></div></div><div class="kpi-delta" id="delta-eng"></div></div>
     <div class="kpi fade-in"><div class="kpi-src">👍 Facebook</div><div class="kpi-name">Page Fans</div><div class="kpi-val" id="kpi-fans"><div class="spinner"></div></div><div class="kpi-delta" id="delta-fans"></div></div>
     <div class="kpi fade-in"><div class="kpi-src">📊 Instagram</div><div class="kpi-name">Interactions (7D)</div><div class="kpi-val" id="kpi-impr"><div class="spinner"></div></div><div class="kpi-delta" id="delta-impr"></div></div>
     <div class="kpi fade-in"><div class="kpi-src">📄 Instagram</div><div class="kpi-name">Posts This Week</div><div class="kpi-val" id="kpi-posts"><div class="spinner"></div></div><div class="kpi-delta" id="delta-posts"></div></div>
   </div>
 
-  <!-- STORY + SIGNALS -->
-  <p class="section-label section-gap">Stories & content signals</p>
+  <!-- STORIES & SIGNALS -->
+  <p class="sec-label sec-gap">Stories & content signals</p>
   <div class="kpi-grid">
     <div class="kpi fade-in"><div class="kpi-src">📖 Stories</div><div class="kpi-name">Story Views (7D)</div><div class="kpi-val" id="kpi-sv"><div class="spinner"></div></div><div class="kpi-delta" id="delta-sv"></div></div>
     <div class="kpi fade-in"><div class="kpi-src">📖 Stories</div><div class="kpi-name">Story Reach (7D)</div><div class="kpi-val" id="kpi-sr"><div class="spinner"></div></div><div class="kpi-delta" id="delta-sr"></div></div>
@@ -259,58 +339,55 @@
     <div class="kpi fade-in"><div class="kpi-src">🔗 Bio Link</div><div class="kpi-name">Website Clicks (7D)</div><div class="kpi-val" id="kpi-wc"><div class="spinner"></div></div><div class="kpi-delta" id="delta-wc"></div></div>
   </div>
 
-  <!-- ADS SECTION -->
-  <p class="section-label section-gap">Paid performance — last 7 days</p>
-  <div class="ads-hero">
-    <div class="ads-hero-header">
+  <!-- PAID PERFORMANCE -->
+  <p class="sec-label sec-gap">Paid performance — last 7 days</p>
+  <div class="ads-wrap">
+    <div class="ads-header">
       <div>
-        <div class="ads-hero-title">Ad Campaign Performance</div>
-        <div class="ads-hero-sub">Meta Ads · Last 7 days</div>
+        <div class="ads-title">Ad Campaign Performance</div>
+        <div class="ads-sub">Meta Ads · Last 7 days</div>
       </div>
+      <div class="ads-badge">Meta Ads Connected</div>
     </div>
     <div class="ads-kpi-row">
       <div class="ads-kpi"><div class="ads-kpi-label">Ad Spend</div><div class="ads-kpi-val" id="ads-spend">—</div><div class="ads-kpi-sub">7-day total</div></div>
       <div class="ads-kpi"><div class="ads-kpi-label">Paid Reach</div><div class="ads-kpi-val" id="ads-reach">—</div><div class="ads-kpi-sub">unique accounts</div></div>
       <div class="ads-kpi"><div class="ads-kpi-label">Impressions</div><div class="ads-kpi-val" id="ads-impr">—</div><div class="ads-kpi-sub">total views</div></div>
       <div class="ads-kpi"><div class="ads-kpi-label">Link Clicks</div><div class="ads-kpi-val" id="ads-clicks">—</div><div class="ads-kpi-sub">from ads</div></div>
-      <div class="ads-kpi"><div class="ads-kpi-label">CPM</div><div class="ads-kpi-val" id="ads-cpm">—</div><div class="ads-kpi-sub">cost per 1k views</div></div>
+      <div class="ads-kpi"><div class="ads-kpi-label">CPM</div><div class="ads-kpi-val" id="ads-cpm">—</div><div class="ads-kpi-sub">per 1,000 views</div></div>
       <div class="ads-kpi"><div class="ads-kpi-label">CTR</div><div class="ads-kpi-val" id="ads-ctr">—</div><div class="ads-kpi-sub">click-through rate</div></div>
       <div class="ads-kpi"><div class="ads-kpi-label">Leads</div><div class="ads-kpi-val" id="ads-leads">—</div><div class="ads-kpi-sub">from lead forms</div></div>
       <div class="ads-kpi"><div class="ads-kpi-label">Organic Reach</div><div class="ads-kpi-val" id="ads-organic">—</div><div class="ads-kpi-sub">unpaid reach</div></div>
     </div>
 
-    <!-- PAID VS ORGANIC BARS -->
-    <div style="margin-bottom:1.25rem;">
-      <div style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,232,0.3);margin-bottom:10px;">Paid vs Organic reach</div>
-      <div class="paid-organic-row">
+    <div class="pol-section">
+      <div class="pol-title">Paid vs Organic reach breakdown</div>
+      <div class="pol-row">
         <div class="pol-label paid">Paid</div>
-        <div class="pol-bar-track"><div class="pol-bar-fill" id="pol-paid-bar" style="background:var(--gold);width:0%"></div></div>
+        <div class="pol-track"><div class="pol-fill" id="pol-paid-bar" style="background:var(--gold-light);width:0%"></div></div>
         <div class="pol-val paid" id="pol-paid-val">—</div>
       </div>
-      <div class="paid-organic-row">
+      <div class="pol-row">
         <div class="pol-label organic">Organic</div>
-        <div class="pol-bar-track"><div class="pol-bar-fill" id="pol-organic-bar" style="background:rgba(245,240,232,0.3);width:0%"></div></div>
+        <div class="pol-track"><div class="pol-fill" id="pol-organic-bar" style="background:rgba(255,255,255,0.25);width:0%"></div></div>
         <div class="pol-val organic" id="pol-organic-val">—</div>
       </div>
     </div>
 
-    <!-- CAMPAIGNS -->
     <div>
-      <div style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,232,0.3);margin-bottom:10px;">Active campaigns</div>
-      <div id="campaignsList">
-        <div style="font-size:12px;color:rgba(245,240,232,0.4);padding:8px 0;">Loading campaigns…</div>
-      </div>
+      <div class="camps-title">Active campaigns</div>
+      <div id="campaignsList"><div style="font-size:11px;font-weight:300;color:rgba(255,255,255,0.35);padding:6px 0;">Loading…</div></div>
     </div>
   </div>
 
   <!-- REACH CHART -->
-  <p class="section-label section-gap">Reach — 14 days</p>
+  <p class="sec-label sec-gap">Reach — 14 days</p>
   <div class="card" style="margin-bottom:8px;">
     <div class="card-header">
       <span class="card-title">Reach over time</span>
-      <div class="chart-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#C96B4A;"></div>Reach</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#B8924A;"></div>Est. Impressions</div>
+      <div class="leg">
+        <div class="leg-item"><div class="leg-dot" style="background:var(--burgundy-mid);"></div>Reach</div>
+        <div class="leg-item"><div class="leg-dot" style="background:var(--gold);"></div>Est. Impressions</div>
       </div>
     </div>
     <div style="position:relative;height:190px;"><canvas id="reachChart"></canvas></div>
@@ -340,8 +417,8 @@
     </div>
   </div>
 
-  <!-- AUDIENCE DEMOGRAPHICS -->
-  <p class="section-label section-gap">Audience demographics</p>
+  <!-- AUDIENCE -->
+  <p class="sec-label sec-gap">Audience demographics</p>
   <div class="three-col">
     <div class="card"><div class="card-header"><span class="card-title">Age groups</span></div><div id="demoAge"><div class="spinner"></div></div></div>
     <div class="card"><div class="card-header"><span class="card-title">Gender</span></div><div id="demoGender"><div class="spinner"></div></div></div>
@@ -365,7 +442,7 @@
 <div class="footer-spacer"></div>
 <div class="progress-bar" id="progressBar" style="width:100%;"></div>
 <div class="refresh-bar">
-  <span class="refresh-left">Mina Studio · Koru Jewelers · Social Intelligence</span>
+  <span class="refresh-left">Mina Studio · Koru Jewelers</span>
   <div class="refresh-right">
     <span class="refresh-timer" id="refreshTimer">Refreshing in 60s</span>
     <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
@@ -377,35 +454,27 @@
 const API='https://mina-api-xi.vercel.app/api/koru';
 let reachChart=null,contentChart=null,countdown=60,progressInterval=null;
 
-function fmt(n,prefix=''){
+function fmt(n,pre=''){
   if(n===null||n===undefined||isNaN(n))return'—';
-  if(n>=1000000)return prefix+(n/1000000).toFixed(1)+'M';
-  if(n>=1000)return prefix+(n/1000).toFixed(1)+'k';
-  return prefix+n.toLocaleString();
+  if(n>=1000000)return pre+(n/1000000).toFixed(1)+'M';
+  if(n>=1000)return pre+(n/1000).toFixed(1)+'k';
+  return pre+n.toLocaleString();
 }
-
 function pill(delta,pct,suffix=''){
   if(delta===null||delta===undefined)return'';
   const cls=delta>0?'up':delta<0?'down':'neutral';
   const arrow=delta>0?'▲':delta<0?'▼':'●';
-  const pctStr=pct!==null&&pct!==undefined?` (${Number(pct)>0?'+':''}${pct}%)`:'';
-  return`<span class="pill ${cls}">${arrow} ${delta>0?'+':''}${fmt(Math.abs(delta))}${pctStr}${suffix}</span>`;
+  const ps=pct!==null&&pct!==undefined?` (${Number(pct)>0?'+':''}${pct}%)`:'';
+  return`<span class="pill ${cls}">${arrow} ${delta>0?'+':''}${fmt(Math.abs(delta))}${ps}${suffix}</span>`;
 }
-
-function setKPI(id,value,pillHTML,sub){
-  const v=document.getElementById('kpi-'+id);if(v)v.textContent=value;
+function setKPI(id,val,pillHTML,sub){
+  const v=document.getElementById('kpi-'+id);if(v)v.textContent=val;
   const d=document.getElementById('delta-'+id);
-  if(d)d.innerHTML=`<div class="kpi-delta-main">${pillHTML}</div>${sub?`<div class="kpi-delta-sub">${sub}</div>`:''}`;
+  if(d)d.innerHTML=`<div class="kpi-main">${pillHTML}</div>${sub?`<div class="kpi-sub">${sub}</div>`:''}`;
 }
-
 function demoHTML(arr,color){
-  if(!arr||arr.length===0)return'<div style="font-size:11px;color:var(--text-muted);padding:6px 0;">No data available yet</div>';
-  return arr.map(r=>`
-    <div class="demo-row">
-      <div class="demo-label">${r.label}</div>
-      <div class="demo-track"><div class="demo-fill" style="width:${r.pct}%;background:${color};"></div></div>
-      <div class="demo-pct">${r.pct}%</div>
-    </div>`).join('');
+  if(!arr||arr.length===0)return'<div style="font-size:10px;color:var(--text-muted);padding:6px 0;">No data available yet</div>';
+  return arr.map(r=>`<div class="demo-row"><div class="demo-label">${r.label}</div><div class="demo-track"><div class="demo-fill" style="width:${r.pct}%;background:${color};"></div></div><div class="demo-pct">${r.pct}%</div></div>`).join('');
 }
 
 async function loadData(){
@@ -416,7 +485,6 @@ async function loadData(){
     document.getElementById('errorBanner').style.display='none';
     const k=d.kpis;
 
-    // Best post
     if(d.bestPost){
       document.getElementById('bestPostText').textContent=d.bestPost.text;
       document.getElementById('bestPostMeta').textContent=d.bestPost.meta;
@@ -425,7 +493,6 @@ async function loadData(){
       document.getElementById('bpTotal').textContent=fmt(d.bestPost.total);
     }
 
-    // Core KPIs
     setKPI('followers',fmt(k.followers),pill(k.followerDelta,k.followerPct),'vs 30 days ago');
     setKPI('reach',fmt(k.reach7d),pill(k.reachDelta,k.reachPct),'vs previous 7 days');
     const ec=k.engDelta>0?'up':k.engDelta<0?'down':'neutral';
@@ -434,16 +501,13 @@ async function loadData(){
     setKPI('impr',fmt(k.impressions7d),pill(k.impressionsDelta,k.impressionsPct),'vs previous 7 days');
     const pc=k.postsDelta>0?'up':k.postsDelta<0?'down':'neutral';
     setKPI('posts',k.postsThisWeek,`<span class="pill ${pc}">${k.postsDelta>=0?'▲ +':'▼ '}${k.postsDelta} vs last week</span>`,'this week');
-
-    // Stories & signals
-    setKPI('sv',fmt(k.storyImpressions),'<span class="pill live">● Live</span>','7-day story views');
-    setKPI('sr',fmt(k.storyReach),'<span class="pill live">● Live</span>','7-day story reach');
+    setKPI('sv',fmt(k.storyImpressions),'<span class="pill live">● Live</span>','story views');
+    setKPI('sr',fmt(k.storyReach),'<span class="pill live">● Live</span>','story reach');
     setKPI('saves',fmt(k.totalSaves),'<span class="pill live">● Live</span>','7-day saves');
     setKPI('shares',fmt(k.totalShares),'<span class="pill live">● Live</span>','7-day shares');
     setKPI('pv',fmt(k.profileViews7d),'<span class="pill live">● Live</span>','profile visits');
     setKPI('wc',fmt(k.websiteClicks7d),'<span class="pill live">● Live</span>','bio link clicks');
 
-    // Ads
     const a=d.ads||{};
     document.getElementById('ads-spend').textContent=a.spend>0?'$'+parseFloat(a.spend).toFixed(0):'—';
     document.getElementById('ads-reach').textContent=fmt(a.reach);
@@ -454,32 +518,29 @@ async function loadData(){
     document.getElementById('ads-leads').textContent=fmt(a.leads);
     document.getElementById('ads-organic').textContent=fmt(k.organicReach);
 
-    // Paid vs organic bars
-    const totalR=k.reach7d||1;
-    const paidPct=Math.round((k.adReach/totalR)*100);
-    const orgPct=Math.round((k.organicReach/totalR)*100);
+    const totalR=Math.max(k.reach7d||1,1);
+    const paidPct=Math.min(100,Math.round(((k.adReach||0)/totalR)*100));
+    const orgPct=Math.min(100,Math.round(((k.organicReach||0)/totalR)*100));
     document.getElementById('pol-paid-bar').style.width=paidPct+'%';
     document.getElementById('pol-organic-bar').style.width=orgPct+'%';
     document.getElementById('pol-paid-val').textContent=fmt(k.adReach);
     document.getElementById('pol-organic-val').textContent=fmt(k.organicReach);
 
-    // Campaigns
     const camps=a.campaigns||[];
     document.getElementById('campaignsList').innerHTML=camps.length>0
       ?camps.map(c=>`
-          <div class="campaign-row">
-            <div class="campaign-status" style="background:${c.status==='ACTIVE'?'#7EC8A0':'#9B8070'};"></div>
-            <div class="campaign-name">${c.name}<br><span style="font-size:9px;color:rgba(245,240,232,0.3);text-transform:uppercase;letter-spacing:0.06em;">${c.objective||''}</span></div>
-            <div class="campaign-stats">
-              <div class="campaign-stat"><div class="campaign-stat-val">$${parseFloat(c.spend||0).toFixed(0)}</div><div class="campaign-stat-label">Spend</div></div>
-              <div class="campaign-stat"><div class="campaign-stat-val">${fmt(c.reach)}</div><div class="campaign-stat-label">Reach</div></div>
-              <div class="campaign-stat"><div class="campaign-stat-val">${c.ctr}%</div><div class="campaign-stat-label">CTR</div></div>
-              ${c.leads>0?`<div class="campaign-stat"><div class="campaign-stat-val">${c.leads}</div><div class="campaign-stat-label">Leads</div></div>`:''}
-            </div>
-          </div>`).join('')
-      :'<div style="font-size:12px;color:rgba(245,240,232,0.35);padding:8px 0;">No active campaigns found</div>';
+        <div class="camp-row">
+          <div class="camp-dot" style="background:${c.status==='ACTIVE'?'#A8D5B8':'rgba(255,255,255,0.2)'};"></div>
+          <div class="camp-name">${c.name}<div class="camp-obj">${c.objective||''}</div></div>
+          <div class="camp-stats">
+            <div><div class="camp-stat-val">$${parseFloat(c.spend||0).toFixed(0)}</div><div class="camp-stat-label">Spend</div></div>
+            <div><div class="camp-stat-val">${fmt(c.reach)}</div><div class="camp-stat-label">Reach</div></div>
+            <div><div class="camp-stat-val">${c.ctr}%</div><div class="camp-stat-label">CTR</div></div>
+            ${c.leads>0?`<div><div class="camp-stat-val">${c.leads}</div><div class="camp-stat-label">Leads</div></div>`:''}
+          </div>
+        </div>`).join('')
+      :'<div style="font-size:11px;font-weight:300;color:rgba(255,255,255,0.35);padding:6px 0;">No active campaigns found</div>';
 
-    // Platform bars
     document.getElementById('platformBars').innerHTML=(d.platforms||[]).map(p=>`
       <div class="bar-row">
         <div class="bar-label">${p.name}</div>
@@ -487,51 +548,45 @@ async function loadData(){
         <div class="bar-val">${p.pct}%</div>
       </div>`).join('');
 
-    // Top posts
     document.getElementById('topPosts').innerHTML=(d.topPosts||[]).length>0
       ?d.topPosts.map((p,i)=>`
-          <div class="post-item">
-            <div class="post-rank">${i+1}</div>
-            <div class="post-body"><div class="post-text">${p.text}</div><div class="post-meta">${p.meta}</div></div>
-            <div class="post-stat">${p.stat}</div>
-          </div>`).join('')
+        <div class="post-item">
+          <div class="post-rank">${i+1}</div>
+          <div class="post-body"><div class="post-text">${p.text}</div><div class="post-meta">${p.meta}</div></div>
+          <div class="post-stat">${p.stat}</div>
+        </div>`).join('')
       :'<div style="font-size:11px;color:var(--text-muted);">No posts found</div>';
 
-    // Content breakdown
     document.getElementById('contentBreakdown').innerHTML=(d.contentBreakdown||[]).length>0
       ?d.contentBreakdown.map(c=>`
-          <div class="ct-row">
-            <div class="ct-label">${c.type}</div>
-            <div class="ct-track"><div class="ct-fill" style="width:${c.pct}%;"></div></div>
-            <div class="ct-stat">${c.count} posts · ${c.avgEng} avg</div>
-          </div>`).join('')
+        <div class="ct-row">
+          <div class="ct-label">${c.type}</div>
+          <div class="ct-track"><div class="ct-fill" style="width:${c.pct}%;"></div></div>
+          <div class="ct-stat">${c.count} posts · ${c.avgEng} avg</div>
+        </div>`).join('')
       :'<div style="font-size:11px;color:var(--text-muted);">No data</div>';
 
-    // Best day
     const dayData=d.charts?.dayEngagement||[];
     const maxE=Math.max(...dayData.map(x=>x.avgEng),1);
     document.getElementById('bestDayBars').innerHTML=dayData.map(day=>`
       <div class="day-row">
         <div class="day-name">${day.day}</div>
-        <div class="day-bar-track"><div class="day-bar-fill ${day.day===k.bestDay?'best':''}" style="width:${Math.round((day.avgEng/maxE)*100)}%;"></div></div>
+        <div class="day-track"><div class="day-fill ${day.day===k.bestDay?'best':''}" style="width:${Math.round((day.avgEng/maxE)*100)}%;"></div></div>
         <div class="day-val">${day.avgEng}${day.day===k.bestDay?' ⭐':''}</div>
       </div>`).join('');
 
-    // Consistency
     const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     const today=new Date().getDay();
     const weekDays=Array.from({length:7},(_,i)=>({name:dayNames[(today-6+i+7)%7],idx:(today-6+i+7)%7}));
     document.getElementById('consistencySection').innerHTML=`
-      <div style="font-size:12px;color:var(--text-secondary);margin-bottom:10px;"><strong>${k.daysPostedThisWeek}</strong> of 7 days posted this week</div>
-      <div class="dot-row">${weekDays.map(d=>`<div class="day-dot ${d.idx<today?'posted':'missed'}">${d.name.charAt(0)}</div>`).join('')}</div>
-      <div style="margin-top:10px;font-size:11px;color:var(--text-muted);">Best day: <strong style="color:var(--coral);">${k.bestDay}</strong> · avg ${k.bestDayAvgEng} eng</div>`;
+      <div style="font-size:11px;font-weight:400;color:var(--text-mid);margin-bottom:10px;"><strong>${k.daysPostedThisWeek}</strong> of 7 days posted this week</div>
+      <div class="dot-row">${weekDays.map(x=>`<div class="day-dot ${x.idx<today?'posted':'missed'}">${x.name.charAt(0)}</div>`).join('')}</div>
+      <div style="margin-top:10px;font-size:10px;font-weight:400;color:var(--text-muted);">Best day: <strong style="color:var(--burgundy-mid);">${k.bestDay}</strong> · avg ${k.bestDayAvgEng} eng</div>`;
 
-    // Demographics
-    document.getElementById('demoAge').innerHTML=demoHTML(d.demographics?.age,'var(--coral)');
-    document.getElementById('demoGender').innerHTML=demoHTML(d.demographics?.gender,'var(--espresso-mid)');
-    document.getElementById('demoCity').innerHTML=demoHTML(d.demographics?.city,'var(--gold)');
+    document.getElementById('demoAge').innerHTML=demoHTML(d.demographics?.age,'var(--burgundy-mid)');
+    document.getElementById('demoGender').innerHTML=demoHTML(d.demographics?.gender,'var(--gold)');
+    document.getElementById('demoCity').innerHTML=demoHTML(d.demographics?.city,'var(--burgundy-light)');
 
-    // Charts
     const labels=d.charts?.labels14d||[];
     const reach=d.charts?.reach14d||[];
     const impr=d.charts?.impressions14d||[];
@@ -552,11 +607,16 @@ function renderReachChart(labels,reach,impr){
   reachChart=new Chart(document.getElementById('reachChart'),{
     type:'line',
     data:{labels,datasets:[
-      {label:'Reach',data:reach,borderColor:'#C96B4A',backgroundColor:'rgba(201,107,74,0.07)',fill:true,tension:0.4,pointRadius:2,borderWidth:1.5},
-      {label:'Impressions',data:impr,borderColor:'#B8924A',borderDash:[5,4],fill:false,tension:0.4,pointRadius:2,borderWidth:1.5}
+      {label:'Reach',data:reach,borderColor:'#6B2D2D',backgroundColor:'rgba(107,45,45,0.06)',fill:true,tension:0.4,pointRadius:2,borderWidth:1.5},
+      {label:'Impressions',data:impr,borderColor:'#A8864A',borderDash:[5,4],fill:false,tension:0.4,pointRadius:2,borderWidth:1.5}
     ]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},
-      scales:{x:{ticks:{font:{size:10},color:'#9B8070',maxTicksLimit:7},grid:{display:false}},y:{ticks:{font:{size:10},color:'#9B8070',callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v},grid:{color:'rgba(44,26,14,0.05)'}}}}
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},
+      scales:{
+        x:{ticks:{font:{size:10,family:'Montserrat'},color:'#A08888',maxTicksLimit:7},grid:{display:false}},
+        y:{ticks:{font:{size:10,family:'Montserrat'},color:'#A08888',callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v},grid:{color:'rgba(74,26,26,0.04)'}}
+      }
+    }
   });
 }
 
@@ -564,8 +624,14 @@ function renderContentChart(breakdown){
   if(contentChart)contentChart.destroy();
   contentChart=new Chart(document.getElementById('contentChart'),{
     type:'doughnut',
-    data:{labels:breakdown.map(c=>c.type),datasets:[{data:breakdown.map(c=>c.count),backgroundColor:['#C96B4A','#B8924A','#5C3D2E'],borderWidth:0,hoverOffset:4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10,family:'DM Sans'},color:'#5C3D2E',padding:14}},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw} posts`}}},cutout:'65%'}
+    data:{labels:breakdown.map(c=>c.type),datasets:[{data:breakdown.map(c=>c.count),backgroundColor:['#6B2D2D','#A8864A','#8C4444'],borderWidth:0,hoverOffset:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:10,family:'Montserrat'},color:'#4A3030',padding:14}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw} posts`}}
+      },
+      cutout:'65%'
+    }
   });
 }
 
