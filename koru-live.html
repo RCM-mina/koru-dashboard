@@ -17,8 +17,6 @@
     --border:rgba(44,26,14,0.12);--border-strong:rgba(44,26,14,0.22);
   }
   body{font-family:'DM Sans',sans-serif;background:var(--linen);color:var(--text-primary);min-height:100vh;overflow-x:hidden}
-
-  /* NAV */
   .nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;background:var(--espresso);position:sticky;top:0;z-index:100}
   .nav-brand{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light)}
   .nav-right{display:flex;align-items:center;gap:16px}
@@ -26,8 +24,6 @@
   .live-dot{width:5px;height:5px;border-radius:50%;background:#7EC8A0;animation:livepulse 2s infinite}
   @keyframes livepulse{0%,100%{opacity:1}50%{opacity:.3}}
   .nav-time{font-size:11px;color:rgba(245,240,232,0.4);font-variant-numeric:tabular-nums}
-
-  /* HERO */
   .hero{background:var(--espresso);padding:2.5rem 2rem 2rem;border-bottom:1px solid rgba(184,146,74,0.2);position:relative;overflow:hidden}
   .hero::before{content:'KORU';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:180px;font-weight:300;color:rgba(184,146,74,0.06);pointer-events:none;user-select:none}
   .hero-eyebrow{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
@@ -37,13 +33,23 @@
   .hero-meta{display:flex;gap:24px;flex-wrap:wrap}
   .hero-meta-item{font-size:11px;color:rgba(245,240,232,0.5);display:flex;align-items:center;gap:6px}
   .hero-meta-dot{width:3px;height:3px;background:var(--gold);border-radius:50%}
-
-  /* LAYOUT */
   .main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
   .section-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;padding-left:2px}
 
+  /* BEST POST HERO */
+  .best-post-card{background:var(--espresso);border-radius:14px;padding:1.5rem 1.75rem;margin-bottom:2rem;display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap}
+  .best-post-crown{font-size:28px;flex-shrink:0;margin-top:2px}
+  .best-post-body{flex:1;min-width:200px}
+  .best-post-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .best-post-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--linen);line-height:1.4;margin-bottom:6px}
+  .best-post-meta{font-size:11px;color:rgba(245,240,232,0.45)}
+  .best-post-stats{display:flex;gap:20px;flex-shrink:0;flex-wrap:wrap}
+  .best-post-stat{text-align:center}
+  .best-post-stat-value{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold-light);line-height:1}
+  .best-post-stat-label{font-size:10px;color:rgba(245,240,232,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-top:3px}
+
   /* KPI CARDS */
-  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:2rem}
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-bottom:1.5rem}
   .kpi-card{background:var(--cream);border:0.5px solid var(--border);border-radius:12px;padding:1.25rem 1.25rem 1rem;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s}
   .kpi-card:hover{border-color:var(--border-strong);transform:translateY(-1px)}
   .kpi-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--coral) 0%,var(--gold) 100%);opacity:0;transition:opacity 0.2s}
@@ -72,6 +78,14 @@
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
   .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
 
+  /* INSIGHT ROWS */
+  .insight-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .insight-row:last-child{margin-bottom:0}
+  .insight-label{font-size:11px;color:var(--text-secondary);width:90px;flex-shrink:0;font-weight:500}
+  .insight-bar-track{flex:1;height:5px;background:var(--linen-dark);border-radius:3px;overflow:hidden}
+  .insight-bar-fill{height:100%;border-radius:3px;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+  .insight-stat{font-size:11px;color:var(--text-muted);width:90px;text-align:right;flex-shrink:0}
+
   /* PLATFORM BARS */
   .platform-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
   .platform-row:last-child{margin-bottom:0}
@@ -89,23 +103,28 @@
   .post-meta{font-size:10px;color:var(--text-muted)}
   .post-stat{font-size:12px;font-weight:500;color:var(--coral);text-align:right;flex-shrink:0}
 
-  /* CONTENT TYPE */
-  .content-type-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .content-type-row:last-child{margin-bottom:0}
-  .content-type-name{font-size:11px;color:var(--text-secondary);width:90px;flex-shrink:0;font-weight:500}
-  .content-type-bar-track{flex:1;height:6px;background:var(--linen-dark);border-radius:3px;overflow:hidden}
-  .content-type-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--coral),var(--gold));transition:width 0.9s cubic-bezier(.4,0,.2,1)}
-  .content-type-stat{font-size:11px;color:var(--text-muted);width:80px;text-align:right;flex-shrink:0}
+  /* BEST DAY BARS */
+  .day-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .day-name{font-size:11px;color:var(--text-secondary);width:30px;flex-shrink:0;font-weight:500}
+  .day-bar-track{flex:1;height:16px;background:var(--linen-dark);border-radius:4px;overflow:hidden;position:relative}
+  .day-bar-fill{height:100%;border-radius:4px;background:var(--coral);opacity:0.7;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+  .day-bar-fill.best{opacity:1;background:linear-gradient(90deg,var(--coral),var(--gold))}
+  .day-val{font-size:11px;color:var(--text-muted);width:50px;text-align:right;flex-shrink:0}
 
   /* DEMO BARS */
   .demo-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
   .demo-row:last-child{margin-bottom:0}
   .demo-label{font-size:11px;color:var(--text-secondary);width:70px;flex-shrink:0}
   .demo-bar-track{flex:1;height:5px;background:var(--linen-dark);border-radius:3px;overflow:hidden}
-  .demo-bar-fill{height:100%;border-radius:3px;background:var(--espresso-mid);transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+  .demo-bar-fill{height:100%;border-radius:3px;transition:width 0.9s cubic-bezier(.4,0,.2,1)}
   .demo-pct{font-size:11px;font-weight:500;color:var(--text-primary);width:28px;text-align:right;flex-shrink:0}
 
-  /* MISC */
+  /* CONSISTENCY */
+  .consistency-row{display:flex;gap:6px;margin-top:8px}
+  .day-dot{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500}
+  .day-dot.posted{background:rgba(59,122,87,0.15);color:var(--green)}
+  .day-dot.missed{background:var(--linen-dark);color:var(--text-muted)}
+
   .error-banner{background:#FEF2F0;border:0.5px solid rgba(201,107,74,0.3);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--coral);margin-bottom:1rem}
   .loading-spinner{width:18px;height:18px;border:1.5px solid var(--border);border-top-color:var(--coral);border-radius:50%;animation:spin 0.8s linear infinite;margin:4px auto}
   @keyframes spin{to{transform:rotate(360deg)}}
@@ -120,8 +139,7 @@
   .fade-in{opacity:0;transform:translateY(8px);animation:fadein 0.5s ease forwards}
   @keyframes fadein{to{opacity:1;transform:translateY(0)}}
   .fade-in:nth-child(1){animation-delay:.05s}.fade-in:nth-child(2){animation-delay:.10s}.fade-in:nth-child(3){animation-delay:.15s}.fade-in:nth-child(4){animation-delay:.20s}.fade-in:nth-child(5){animation-delay:.25s}.fade-in:nth-child(6){animation-delay:.30s}.fade-in:nth-child(7){animation-delay:.35s}.fade-in:nth-child(8){animation-delay:.40s}.fade-in:nth-child(9){animation-delay:.45s}
-
-  @media(max-width:640px){.two-col,.three-col{grid-template-columns:1fr}.hero-title{font-size:30px}.hero::before{display:none}.nav,.main{padding:0 1rem}.main{padding:1.5rem 1rem 3rem}}
+  @media(max-width:640px){.two-col,.three-col{grid-template-columns:1fr}.hero-title{font-size:30px}.hero::before{display:none}.nav{padding:0 1rem}.main{padding:1.5rem 1rem 3rem}.best-post-card{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -148,7 +166,32 @@
 <main class="main">
   <div id="errorBanner" class="error-banner" style="display:none;"></div>
 
-  <!-- KPI ROW 1 — Core metrics -->
+  <!-- BEST POST HERO -->
+  <p class="section-label">⭐ Best performing post</p>
+  <div class="best-post-card" id="bestPostCard">
+    <div class="best-post-crown">🏆</div>
+    <div class="best-post-body">
+      <div class="best-post-eyebrow">Top post by engagement</div>
+      <div class="best-post-text" id="bestPostText">Loading…</div>
+      <div class="best-post-meta" id="bestPostMeta">—</div>
+    </div>
+    <div class="best-post-stats">
+      <div class="best-post-stat">
+        <div class="best-post-stat-value" id="bestPostLikes">—</div>
+        <div class="best-post-stat-label">Likes</div>
+      </div>
+      <div class="best-post-stat">
+        <div class="best-post-stat-value" id="bestPostComments">—</div>
+        <div class="best-post-stat-label">Comments</div>
+      </div>
+      <div class="best-post-stat">
+        <div class="best-post-stat-value" id="bestPostTotal">—</div>
+        <div class="best-post-stat-label">Total Eng.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORE KPIs -->
   <p class="section-label">Core metrics — live with growth</p>
   <div class="kpi-grid">
     <div class="kpi-card fade-in">
@@ -189,9 +232,33 @@
     </div>
   </div>
 
-  <!-- KPI ROW 2 — New metrics -->
-  <p class="section-label">Discovery & video — live</p>
+  <!-- STORY + SAVES + SHARES KPIs -->
+  <p class="section-label">Stories & content signals — live</p>
   <div class="kpi-grid">
+    <div class="kpi-card fade-in">
+      <div class="kpi-platform">📖 Stories</div>
+      <div class="kpi-label">Story Views (7D)</div>
+      <div class="kpi-value" id="kpi-storyviews"><div class="loading-spinner"></div></div>
+      <div class="kpi-delta-row" id="delta-storyviews"></div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-platform">📖 Stories</div>
+      <div class="kpi-label">Story Reach (7D)</div>
+      <div class="kpi-value" id="kpi-storyreach"><div class="loading-spinner"></div></div>
+      <div class="kpi-delta-row" id="delta-storyreach"></div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-platform">🔖 Instagram</div>
+      <div class="kpi-label">Saves (7D)</div>
+      <div class="kpi-value" id="kpi-saves"><div class="loading-spinner"></div></div>
+      <div class="kpi-delta-row" id="delta-saves"></div>
+    </div>
+    <div class="kpi-card fade-in">
+      <div class="kpi-platform">↗ Instagram</div>
+      <div class="kpi-label">Shares (7D)</div>
+      <div class="kpi-value" id="kpi-shares"><div class="loading-spinner"></div></div>
+      <div class="kpi-delta-row" id="delta-shares"></div>
+    </div>
     <div class="kpi-card fade-in">
       <div class="kpi-platform">👤 Instagram</div>
       <div class="kpi-label">Profile Visits (7D)</div>
@@ -203,12 +270,6 @@
       <div class="kpi-label">Website Clicks (7D)</div>
       <div class="kpi-value" id="kpi-clicks"><div class="loading-spinner"></div></div>
       <div class="kpi-delta-row" id="delta-clicks"></div>
-    </div>
-    <div class="kpi-card fade-in">
-      <div class="kpi-platform">▶ Reels</div>
-      <div class="kpi-label">Video Posts (30D)</div>
-      <div class="kpi-value" id="kpi-reels"><div class="loading-spinner"></div></div>
-      <div class="kpi-delta-row" id="delta-reels"></div>
     </div>
   </div>
 
@@ -225,8 +286,20 @@
     <div style="position:relative;height:200px;"><canvas id="reachChart"></canvas></div>
   </div>
 
-  <!-- CONTENT TYPE + TOP POSTS -->
+  <!-- BEST DAY + CONSISTENCY -->
   <div class="two-col">
+    <div class="chart-card">
+      <div class="chart-header"><span class="chart-title">Best day to post (avg engagement)</span></div>
+      <div id="bestDayBars"><div class="loading-spinner"></div></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-header"><span class="chart-title">Posting consistency — this week</span></div>
+      <div id="consistencySection"><div class="loading-spinner"></div></div>
+    </div>
+  </div>
+
+  <!-- CONTENT TYPE + TOP POSTS -->
+  <div class="two-col" style="margin-top:10px;">
     <div class="chart-card">
       <div class="chart-header"><span class="chart-title">Content type performance (30D)</span></div>
       <div id="contentBreakdown"><div class="loading-spinner"></div></div>
@@ -254,16 +327,14 @@
     </div>
   </div>
 
-  <!-- PLATFORM + CONTENT TYPE CHART -->
+  <!-- PLATFORM + CONTENT MIX -->
   <div class="two-col" style="margin-top:10px;">
     <div class="chart-card">
       <div class="chart-header"><span class="chart-title">Traffic by platform</span></div>
       <div id="platformBars"></div>
     </div>
     <div class="chart-card">
-      <div class="chart-header">
-        <span class="chart-title">Content mix (30D)</span>
-      </div>
+      <div class="chart-header"><span class="chart-title">Content mix (30D)</span></div>
       <div style="position:relative;height:160px;"><canvas id="contentChart"></canvas></div>
     </div>
   </div>
@@ -283,71 +354,81 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 const API = 'https://mina-api-xi.vercel.app/api/koru';
-let reachChart = null, contentChart = null;
-let countdown = 60, progressInterval = null;
+let reachChart=null, contentChart=null;
+let countdown=60, progressInterval=null;
 
-function fmt(n) {
-  if (n===null||n===undefined||isNaN(n)) return '—';
-  if (n>=1000000) return (n/1000000).toFixed(1)+'M';
-  if (n>=1000) return (n/1000).toFixed(1)+'k';
+function fmt(n){
+  if(n===null||n===undefined||isNaN(n))return'—';
+  if(n>=1000000)return(n/1000000).toFixed(1)+'M';
+  if(n>=1000)return(n/1000).toFixed(1)+'k';
   return n.toLocaleString();
 }
 
-function pill(delta, pct, suffix='') {
-  if (delta===null||delta===undefined) return '';
-  const cls = delta>0?'up':delta<0?'down':'neutral';
-  const arrow = delta>0?'▲':delta<0?'▼':'●';
-  const pctStr = pct!==null&&pct!==undefined ? ` (${Number(pct)>0?'+':''}${pct}%)` : '';
-  return `<span class="delta-pill ${cls}">${arrow} ${delta>0?'+':''}${fmt(Math.abs(delta))}${pctStr}${suffix}</span>`;
+function pill(delta,pct,suffix=''){
+  if(delta===null||delta===undefined)return'';
+  const cls=delta>0?'up':delta<0?'down':'neutral';
+  const arrow=delta>0?'▲':delta<0?'▼':'●';
+  const pctStr=pct!==null&&pct!==undefined?` (${Number(pct)>0?'+':''}${pct}%)`:'';
+  return`<span class="delta-pill ${cls}">${arrow} ${delta>0?'+':''}${fmt(Math.abs(delta))}${pctStr}${suffix}</span>`;
 }
 
-function setKPI(id, value, pillHTML, sub) {
-  const v = document.getElementById('kpi-'+id);
-  if (v) v.textContent = value;
-  const d = document.getElementById('delta-'+id);
-  if (d) d.innerHTML = `<div class="kpi-delta-main">${pillHTML}</div>${sub?`<div class="kpi-delta-sub">${sub}</div>`:''}`;
+function setKPI(id,value,pillHTML,sub){
+  const v=document.getElementById('kpi-'+id);
+  if(v)v.textContent=value;
+  const d=document.getElementById('delta-'+id);
+  if(d)d.innerHTML=`<div class="kpi-delta-main">${pillHTML}</div>${sub?`<div class="kpi-delta-sub">${sub}</div>`:''}`;
 }
 
-function demoHTML(arr, color) {
-  if (!arr||arr.length===0) return '<div style="font-size:12px;color:var(--text-muted);padding:8px 0;">No data available</div>';
+function demoHTML(arr,color){
+  if(!arr||arr.length===0)return'<div style="font-size:12px;color:var(--text-muted);padding:8px 0;">No data available yet</div>';
   return arr.map(item=>`
     <div class="demo-row">
       <div class="demo-label">${item.label}</div>
-      <div class="demo-bar-track"><div class="demo-bar-fill" style="width:${item.pct}%;background:${color||'var(--espresso-mid)'};"></div></div>
+      <div class="demo-bar-track"><div class="demo-bar-fill" style="width:${item.pct}%;background:${color};"></div></div>
       <div class="demo-pct">${item.pct}%</div>
     </div>`).join('');
 }
 
-async function loadData() {
-  try {
-    const res = await fetch(API+'?t='+Date.now());
-    const d = await res.json();
-    if (!d.ok) throw new Error(d.error||'API error');
+async function loadData(){
+  try{
+    const res=await fetch(API+'?t='+Date.now());
+    const d=await res.json();
+    if(!d.ok)throw new Error(d.error||'API error');
     document.getElementById('errorBanner').style.display='none';
 
-    const k = d.kpis;
+    const k=d.kpis;
+
+    // Best post
+    if(d.bestPost){
+      document.getElementById('bestPostText').textContent=d.bestPost.text;
+      document.getElementById('bestPostMeta').textContent=d.bestPost.meta;
+      document.getElementById('bestPostLikes').textContent=fmt(d.bestPost.likes);
+      document.getElementById('bestPostComments').textContent=fmt(d.bestPost.comments);
+      document.getElementById('bestPostTotal').textContent=fmt(d.bestPost.total);
+    }
 
     // Core KPIs
-    setKPI('followers', fmt(k.followers), pill(k.followerDelta, k.followerPct), 'vs 30 days ago');
-    setKPI('reach', fmt(k.reach7d), pill(k.reachDelta, k.reachPct), 'vs previous 7 days');
-    const engCls = k.engDelta>0?'up':k.engDelta<0?'down':'neutral';
-    setKPI('eng', k.engRate+'%',
-      k.engDelta!==null ? `<span class="delta-pill ${engCls}">${k.engDelta>=0?'▲ +':'▼ '}${Math.abs(k.engDelta).toFixed(1)}pp</span>` : '',
+    setKPI('followers',fmt(k.followers),pill(k.followerDelta,k.followerPct),'vs 30 days ago');
+    setKPI('reach',fmt(k.reach7d),pill(k.reachDelta,k.reachPct),'vs previous 7 days');
+    const engCls=k.engDelta>0?'up':k.engDelta<0?'down':'neutral';
+    setKPI('eng',k.engRate+'%',
+      k.engDelta!==null?`<span class="delta-pill ${engCls}">${k.engDelta>=0?'▲ +':'▼ '}${Math.abs(k.engDelta).toFixed(1)}pp</span>`:'',
       'vs previous 7 days');
-    setKPI('fans', fmt(k.pageFans), '<span class="delta-live">● Live from Facebook</span>', 'total page fans');
-    setKPI('impr', fmt(k.impressions7d), pill(k.impressionsDelta, k.impressionsPct), 'vs previous 7 days');
-    const postCls = k.postsDelta>0?'up':k.postsDelta<0?'down':'neutral';
-    setKPI('posts', k.postsThisWeek,
-      `<span class="delta-pill ${postCls}">${k.postsDelta>=0?'▲ +':'▼ '}${k.postsDelta} vs last week</span>`,
-      'posts published this week');
+    setKPI('fans',fmt(k.pageFans),'<span class="delta-live">● Live from Facebook</span>','total page fans');
+    setKPI('impr',fmt(k.impressions7d),pill(k.impressionsDelta,k.impressionsPct),'vs previous 7 days');
+    const postCls=k.postsDelta>0?'up':k.postsDelta<0?'down':'neutral';
+    setKPI('posts',k.postsThisWeek,`<span class="delta-pill ${postCls}">${k.postsDelta>=0?'▲ +':'▼ '}${k.postsDelta} vs last week</span>`,'posts this week');
 
-    // New KPIs
-    setKPI('profile', fmt(k.profileViews7d), '<span class="delta-live">● Live</span>', '7-day profile visits');
-    setKPI('clicks', fmt(k.websiteClicks7d), '<span class="delta-live">● Live</span>', '7-day bio link clicks');
-    setKPI('reels', k.reelCount, '<span class="delta-live">● Last 50 posts</span>', 'video posts published');
+    // Story & content signals
+    setKPI('storyviews',fmt(k.storyImpressions),'<span class="delta-live">● Live</span>','7-day story views');
+    setKPI('storyreach',fmt(k.storyReach),'<span class="delta-live">● Live</span>','7-day story reach');
+    setKPI('saves',fmt(k.totalSaves),'<span class="delta-live">● Live</span>','7-day total saves');
+    setKPI('shares',fmt(k.totalShares),'<span class="delta-live">● Live</span>','7-day total shares');
+    setKPI('profile',fmt(k.profileViews7d),'<span class="delta-live">● Live</span>','7-day profile visits');
+    setKPI('clicks',fmt(k.websiteClicks7d),'<span class="delta-live">● Live</span>','7-day bio link clicks');
 
     // Platform bars
-    document.getElementById('platformBars').innerHTML = (d.platforms||[]).map(p=>`
+    document.getElementById('platformBars').innerHTML=(d.platforms||[]).map(p=>`
       <div class="platform-row">
         <div class="platform-name">${p.name}</div>
         <div class="bar-track"><div class="bar-fill" style="width:${p.pct}%;background:${p.color};"></div></div>
@@ -355,8 +436,8 @@ async function loadData() {
       </div>`).join('');
 
     // Top posts
-    document.getElementById('topPosts').innerHTML = (d.topPosts||[]).length>0
-      ? d.topPosts.map((p,i)=>`
+    document.getElementById('topPosts').innerHTML=(d.topPosts||[]).length>0
+      ?d.topPosts.map((p,i)=>`
           <div class="post-item">
             <div class="post-rank">${i+1}</div>
             <div class="post-body">
@@ -365,46 +446,79 @@ async function loadData() {
             </div>
             <div class="post-stat">${p.stat}</div>
           </div>`).join('')
-      : '<div style="font-size:12px;color:var(--text-muted);">No posts found</div>';
+      :'<div style="font-size:12px;color:var(--text-muted);">No posts found</div>';
 
     // Content breakdown
-    document.getElementById('contentBreakdown').innerHTML = (d.contentBreakdown||[]).length>0
-      ? d.contentBreakdown.map(c=>`
-          <div class="content-type-row">
-            <div class="content-type-name">${c.type}</div>
-            <div class="content-type-bar-track"><div class="content-type-bar-fill" style="width:${c.pct}%;"></div></div>
-            <div class="content-type-stat">${c.count} posts · ${c.avgEng} avg eng</div>
+    document.getElementById('contentBreakdown').innerHTML=(d.contentBreakdown||[]).length>0
+      ?d.contentBreakdown.map(c=>`
+          <div class="insight-row">
+            <div class="insight-label">${c.type}</div>
+            <div class="insight-bar-track"><div class="insight-bar-fill" style="width:${c.pct}%;background:linear-gradient(90deg,var(--coral),var(--gold));"></div></div>
+            <div class="insight-stat">${c.count} posts · ${c.avgEng} avg</div>
           </div>`).join('')
-      : '<div style="font-size:12px;color:var(--text-muted);">No data</div>';
+      :'<div style="font-size:12px;color:var(--text-muted);">No data</div>';
+
+    // Best day to post
+    const dayData=d.charts?.dayEngagement||[];
+    const maxEng=Math.max(...dayData.map(d=>d.avgEng),1);
+    document.getElementById('bestDayBars').innerHTML=dayData.map(day=>`
+      <div class="day-row">
+        <div class="day-name">${day.day}</div>
+        <div class="day-bar-track">
+          <div class="day-bar-fill ${day.day===k.bestDay?'best':''}" style="width:${Math.round((day.avgEng/maxEng)*100)}%;"></div>
+        </div>
+        <div class="day-val">${day.avgEng} eng${day.day===k.bestDay?' ⭐':''}</div>
+      </div>`).join('');
+
+    // Posting consistency
+    const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const today=new Date().getDay();
+    const weekDays=Array.from({length:7},(_,i)=>{
+      const dayIdx=(today-6+i+7)%7;
+      return{name:dayNames[dayIdx],idx:dayIdx};
+    });
+    document.getElementById('consistencySection').innerHTML=`
+      <div style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">
+        <strong>${k.daysPostedThisWeek}</strong> of 7 days posted this week
+      </div>
+      <div class="consistency-row">
+        ${weekDays.map(d=>`
+          <div class="day-dot ${d.idx<today?'posted':'missed'}" title="${d.name}">
+            ${d.name.charAt(0)}
+          </div>`).join('')}
+      </div>
+      <div style="margin-top:12px;font-size:11px;color:var(--text-muted);">
+        Best day: <strong style="color:var(--coral);">${k.bestDay}</strong> · avg ${k.bestDayAvgEng} engagements
+      </div>`;
 
     // Demographics
-    document.getElementById('demoAge').innerHTML = demoHTML(d.demographics?.age, 'var(--coral)');
-    document.getElementById('demoGender').innerHTML = demoHTML(d.demographics?.gender, 'var(--espresso-mid)');
-    document.getElementById('demoCity').innerHTML = demoHTML(d.demographics?.city, 'var(--gold)');
+    document.getElementById('demoAge').innerHTML=demoHTML(d.demographics?.age,'var(--coral)');
+    document.getElementById('demoGender').innerHTML=demoHTML(d.demographics?.gender,'var(--espresso-mid)');
+    document.getElementById('demoCity').innerHTML=demoHTML(d.demographics?.city,'var(--gold)');
 
     // Reach chart
-    const labels = d.charts?.labels14d||[];
-    const reach  = d.charts?.reach14d||[];
-    const impr   = d.charts?.impressions14d||[];
-    if (reach.length>0) renderReachChart(labels, reach, impr);
+    const labels=d.charts?.labels14d||[];
+    const reach=d.charts?.reach14d||[];
+    const impr=d.charts?.impressions14d||[];
+    if(reach.length>0)renderReachChart(labels,reach,impr);
 
-    // Content type donut chart
-    if ((d.contentBreakdown||[]).length>0) renderContentChart(d.contentBreakdown);
+    // Content donut
+    if((d.contentBreakdown||[]).length>0)renderContentChart(d.contentBreakdown);
 
-    document.getElementById('lastUpdated').textContent =
+    document.getElementById('lastUpdated').textContent=
       'Updated '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 
-  } catch(err) {
-    const b = document.getElementById('errorBanner');
+  }catch(err){
+    const b=document.getElementById('errorBanner');
     b.style.display='block';
     b.textContent='Could not fetch live data: '+err.message+'. Retrying in 60s.';
   }
   startCountdown();
 }
 
-function renderReachChart(labels, reach, impr) {
-  if (reachChart) reachChart.destroy();
-  reachChart = new Chart(document.getElementById('reachChart'), {
+function renderReachChart(labels,reach,impr){
+  if(reachChart)reachChart.destroy();
+  reachChart=new Chart(document.getElementById('reachChart'),{
     type:'line',
     data:{labels,datasets:[
       {label:'Reach',data:reach,borderColor:'#C96B4A',backgroundColor:'rgba(201,107,74,0.08)',fill:true,tension:0.4,pointRadius:2,borderWidth:1.5},
@@ -421,18 +535,13 @@ function renderReachChart(labels, reach, impr) {
   });
 }
 
-function renderContentChart(breakdown) {
-  if (contentChart) contentChart.destroy();
-  contentChart = new Chart(document.getElementById('contentChart'), {
+function renderContentChart(breakdown){
+  if(contentChart)contentChart.destroy();
+  contentChart=new Chart(document.getElementById('contentChart'),{
     type:'doughnut',
     data:{
-      labels: breakdown.map(c=>c.type),
-      datasets:[{
-        data: breakdown.map(c=>c.count),
-        backgroundColor:['#C96B4A','#B8924A','#5C3D2E'],
-        borderWidth:0,
-        hoverOffset:4,
-      }]
+      labels:breakdown.map(c=>c.type),
+      datasets:[{data:breakdown.map(c=>c.count),backgroundColor:['#C96B4A','#B8924A','#5C3D2E'],borderWidth:0,hoverOffset:4}]
     },
     options:{
       responsive:true,maintainAspectRatio:false,
@@ -445,13 +554,13 @@ function renderContentChart(breakdown) {
   });
 }
 
-function startCountdown() {
+function startCountdown(){
   clearInterval(progressInterval);
   countdown=60;
-  const bar = document.getElementById('progressBar');
+  const bar=document.getElementById('progressBar');
   bar.style.transition='none';
   bar.style.width='100%';
-  progressInterval = setInterval(()=>{
+  progressInterval=setInterval(()=>{
     countdown--;
     bar.style.transition='width 1s linear';
     bar.style.width=(countdown/60*100)+'%';
@@ -461,7 +570,7 @@ function startCountdown() {
 }
 
 setInterval(()=>{
-  document.getElementById('navTime').textContent =
+  document.getElementById('navTime').textContent=
     new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 },1000);
 
